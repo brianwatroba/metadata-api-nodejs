@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "node test.js"
   },
   "author": "Alex Atallah <alex.atallah@opensea.io>",
@@ -17,6 +18,7 @@
     "mongoose": "^6.6.1"
   },
   "devDependencies": {
+    "nodemon": "^2.0.20",
     "request": "^2.81.0",
     "tape": "^4.7.0"
   },

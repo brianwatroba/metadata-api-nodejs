@@ -2,9 +2,10 @@ const express = require("express");
 const path = require("path");
 const moment = require("moment");
 const { HOST } = require("./src/constants");
-const db = require("./src/database");
+const connectDB = require("./config/db");
 
 const PORT = process.env.PORT || 4000;
+connectDB();
 
 const app = express()
   .set("port", PORT)
