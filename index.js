@@ -1,38 +1,36 @@
 const express = require("express");
 const path = require("path");
-const moment = require("moment");
-const { HOST } = require("./src/constants");
+const { HOST } = require("./config/constants");
 const connectDB = require("./config/db");
+const Contract = require("./models/Contract");
 
 const PORT = process.env.PORT || 4000;
 connectDB();
 
-const app = express()
-  .set("port", PORT)
-  .set("views", path.join(__dirname, "views"))
-  .set("view engine", "ejs");
+const app = express().set("port", PORT);
 
 // Static public files
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function (req, res) {
-  res.send("Get ready for OpenSea!");
+  res.send("Welcome to soulbound");
 });
 
-app.get("/api/token/:token_id", function (req, res) {
-  const tokenId = parseInt(req.params.token_id).toString();
-  const data = {
-    name: "Soulbound Test",
-    image: `${HOST}/images/${tokenId}.png`,
-    attributes: [
-      { trait_type: "Eyes", value: "Crazy" },
-      { trait_type: "Background", value: "Army Green" },
-      { trait_type: "Mouth", value: "Small Grin" },
-      { trait_type: "Fur", value: "Golden Brown" },
-      { trait_type: "Clothes", value: "Blue Dress" },
-    ],
-  };
-  res.send(data);
+app.get("/metadata/:address", async (req, res) => {
+  try {
+    const { address } = req.params;
+    const contract = await Contract.findOne({ address });
+    res.json({
+      name: contract.name,
+      description: contract.description,
+      image: contract.image,
+      external_link: contract.externalLink,
+      seller_fee_basis_points: contract.sellerFeeBasisPoints,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Server error");
+  }
 });
 
 app.listen(app.get("port"), function () {

@@ -8,13 +8,11 @@
     "dev": "nodemon index.js",
     "test": "node test.js"
   },
-  "author": "Alex Atallah <alex.atallah@opensea.io>",
+  "author": "Brian Watroba",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.0.2",
-    "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "moment": "^2.22.2",
     "mongoose": "^6.6.1"
   },
   "devDependencies": {
