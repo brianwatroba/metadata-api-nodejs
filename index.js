@@ -5,10 +5,14 @@ const connectDB = require("./config/db");
 const Contract = require("./models/Contract");
 const Badge = require("./models/Badge");
 
+const { MONGO_URI } = require("./config/constants");
+
 const PORT = process.env.PORT || 4000;
 connectDB();
 
 const app = express().set("port", PORT);
+
+console.log("Mongo URI server", MONGO_URI);
 
 // Static public files
 app.use(express.static(path.join(__dirname, "public")));
