@@ -126,6 +126,6 @@ app.get("/metadata/:contract_address/:token_id", async (req, res) => {
 //   }
 // });
 
-app.listen(PORT, function () {
+app.listen(app.get("port"), function () {
   console.log("Node app is running on port", app.get("port"));
 });
