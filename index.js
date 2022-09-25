@@ -21,7 +21,7 @@ app.get("/metadata/:address", async (req, res) => {
     const { address } = req.params;
     console.log(address);
     const contract = await Contract.findOne({ address: address.toLowerCase() });
-    const { name, description, image, banner_image, external_link } = contract;
+    const { name, description, image, banner_image, external_link, seller_fee_basis_points } = contract;
     res.json({
       name,
       description,
