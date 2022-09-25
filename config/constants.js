@@ -4,8 +4,8 @@ const { BigNumber } = require("ethers");
 const MONGO_URI = process.env.MONGO_URI;
 
 const ownerAddress = "0x2A45243809A32867C99bDc777e5Cc00c813C4220"; // kevin's address
-const tcAthleticContract = "";
-const tcDiveContract = "";
+const tcAthleticContract = "0xc7c3e025e0491fdd7d8ccaaf1e29ea8aa6111fd7";
+const tcDiveContract = "0xf5ef8edbf73bb79bbc1a86d6f8d69498c8fa9e62";
 
 const encodeTokenId = (badgeType, address) => {
   return ethers.utils.solidityPack(["uint96", "address"], [badgeType, address]);
