@@ -12,13 +12,11 @@ connectDB();
 
 const app = express().set("port", PORT);
 
-console.log("Mongo URI server", MONGO_URI);
-
 // Static public files
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", function (req, res) {
-  res.send("Welcome to soulbound");
+  res.send("Welcome to Soulbound!");
 });
 
 // contracts
