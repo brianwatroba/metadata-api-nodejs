@@ -19,11 +19,15 @@ const ContractSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    externalLink: {
+    banner_image: {
       type: String,
       required: true,
     },
-    sellerFeeBasisPoints: {
+    external_link: {
+      type: String,
+      required: true,
+    },
+    seller_fee_basis_points: {
       type: Number,
       default: 0,
     },
